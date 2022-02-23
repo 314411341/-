@@ -33,6 +33,14 @@ set合集：
 my_files = set(["file1", "file2", "file3"])
 print(my_files)
 my_files.add("file3")
+
+
+print(v.name)
+print(v.window_size)
+print(v.create_time)
+print(t.create_time)
+print(t.language)
+print(t.get_more_info())
 print(my_files)
 my_files.add("file4")
 print(my_files)
@@ -97,3 +105,44 @@ files.get("ID"): 111
 update: {'ID': 111, 'passport': 'my passport', 'books': [1, 2, 3], 'files': ['1', '2']}
 popped: 111
 remain: {'passport': 'my passport', 'books': [1, 2, 3], 'files': ['1', '2']}
+
+
+继承：
+class File:
+    def __init__(self,name,create_time="today"):
+        self.name =name
+        self.create_time=create_time
+
+    def get_info(self):
+        return self.name+"is created at"+self.create_time
+class Video(File):
+    def __init__(self,name,window_size=(1080,720)):
+        super().__init__(name=name,create_time="today")
+        self.window_size=window_size
+class Text(File):
+    def __init__(self,name,language="zh-cn"):
+        super().__init__(name=name,create_time="today")
+        self.language =language
+    def get_more_info(self):
+        return self.get_info()+",using language fo"+self.language
+
+v=Video("my_video")
+t=Text("my_text")
+print(v.get_info())
+print(v.name)
+print(v.window_size)
+print(v.create_time)
+print(t.create_time)
+print(t.language)
+print(t.get_more_info())
+
+print：
+my_videois created attoday
+my_video
+(1080, 720)
+today
+today
+zh-cn
+my_textis created attoday,using language fozh-cn
+
+强隐藏两个下划线__  弱隐藏一个_
