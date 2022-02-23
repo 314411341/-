@@ -1,0 +1,99 @@
+
+list：
+files = ["f1.txt", "f2.txt", "f3.txt", "f4.txt", "f5.txt"]
+print("files[0] ", files[0])
+print("files[3] ", files[3])
+print("files[-1] ", files[-1])
+print("files[-3] ", files[-3])
+
+print
+files[0]  f1.txt
+files[3]  f4.txt
+files[-1]  f5.txt
+files[-3]  f3.txt
+在列表中，你可以存放不同类型的元素，字符，数字，甚至列表里还能有列表。
+
+dict：
+files = {"ID": 111, "passport": "my passport", "books": [1,2,3]}
+print(files)
+print(files["books"])
+
+print
+{'ID': 111, 'passport': 'my passport', 'books': [1, 2, 3]}
+[1, 2, 3]
+在dict字典，相当于有了索引的list，调用非常方便，对于唯一的key有唯一的value
+
+元组：
+files = ("file1", "file2", "file3")
+print(files[1])
+files[1] = "file4"   # 这里会报错
+元组中的元素不能被改变value
+
+set合集：
+my_files = set(["file1", "file2", "file3"])
+print(my_files)
+my_files.add("file3")
+print(my_files)
+my_files.add("file4")
+print(my_files)
+my_files.remove("file3")
+print(my_files)
+
+print
+{'file1', 'file2', 'file3'}
+{'file1', 'file2', 'file3'}
+{'file1', 'file2', 'file3', 'file4'}
+{'file1', 'file2', 'file4'}
+set里不会出现重复元素，用来去重
+
+
+pop的运用
+files = []
+for i in range(5):
+    files.append("f"+str(i)+".txt") # 添加
+    print("has", files)
+
+for i in range(len(files)):
+    print("pop", files.pop())   # 从最后一个开始 pop 出
+    print("remain", files)
+    
+print
+has ['f0.txt']
+has ['f0.txt', 'f1.txt']
+has ['f0.txt', 'f1.txt', 'f2.txt']
+has ['f0.txt', 'f1.txt', 'f2.txt', 'f3.txt']
+has ['f0.txt', 'f1.txt', 'f2.txt', 'f3.txt', 'f4.txt']
+pop f4.txt
+remain ['f0.txt', 'f1.txt', 'f2.txt', 'f3.txt']
+pop f3.txt
+remain ['f0.txt', 'f1.txt', 'f2.txt']
+pop f2.txt
+remain ['f0.txt', 'f1.txt']
+pop f1.txt
+remain ['f0.txt']
+pop f0.txt
+remain []
+pop用法：files_name.pop()即为去掉列表最后一个元素
+
+
+files = {"ID": 111, "passport": "my passport", "books": [1,2,3]}
+
+# 按key拿取，并在拿取失败的时候给一个设定好的默认值
+print('files["ID"]:', files["ID"])
+print('files.get("ID"):', files.get("ID"))
+
+# 将另一个字典补充到当前字典
+files.update({"files": ["1", "2"]})
+print('update:', files)
+
+# pop 调一个item，和列表的 pop 类似
+popped = files.pop("ID")
+print('popped:', popped)
+print("remain:", files)
+
+print
+files["ID"]: 111
+files.get("ID"): 111
+update: {'ID': 111, 'passport': 'my passport', 'books': [1, 2, 3], 'files': ['1', '2']}
+popped: 111
+remain: {'passport': 'my passport', 'books': [1, 2, 3], 'files': ['1', '2']}
