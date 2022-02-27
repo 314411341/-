@@ -156,3 +156,38 @@ print(match.group())
 print：
 <re.Match object; span=(2, 5), match='run'>
 run
+特定标识	含义	范围
+\d	任何数字	[0-9]
+\D	不是数字的	
+\s	任何空白字符	[ \t\n\r\f\v]
+\S	空白字符以外的	
+\w	任何大小写字母,数字和 _	[a-zA-Z0-9_]
+\W	\w 以外的	
+\b	匹配一个单词边界	比如 er\b 可以匹配 never 中的 er，但不能匹配 verb 中的 er
+\B	匹配非单词边界	比如 er\B 能匹配 verb 中的 er，但不能匹配 never 中的 er
+\\	强制匹配 \	
+.	匹配任何字符 (除了 \n)	
+?	前面的模式可有可无	
+*	重复零次或多次	
++	重复一次或多次	
+{n,m}	重复 n 至 m 次	
+{n}	重复 n 次	
++?	非贪婪，最小方式匹配 +	
+*?	非贪婪，最小方式匹配 *	
+??	非贪婪，最小方式匹配 ?	
+^	匹配一行开头，在 re.M 下，每行开头都匹配	
+$	匹配一行结尾，在 re.M 下，每行结尾都匹配	
+\A	匹配最开始，在 re.M 下，也从文本最开始	
+\B	匹配最结尾，在 re.M 下，也从文本最结尾	
+
+
+
+
+功能	说明	举例
+re.search()	扫描查找整个字符串，找到第一个模式匹配的	re.search(rrun, I run to you) > 'run'
+re.match()	从字符的最开头匹配，找到第一个模式匹配的即使用 re.M 多行匹配，也是从最最开头开始匹配	re.match(rrun, I run to you) > None
+re.findall()	返回一个不重复的 pattern 的匹配列表	re.findall(rr[ua]n, I run to you. you ran to him) > ['run', 'ran']
+re.finditer()	和 findall 一样，只是用迭代器的方式使用	for item in re.finditer(rr[ua]n, I run to you. you ran to him):
+re.split()	用正则分开字符串	re.split(rr[ua]n, I run to you. you ran to him) > ['I ', ' to you. you ', ' to him']
+re.sub()	用正则替换字符	re.sub(rr[ua]n, jump, I run to you. you ran to him) > 'I jump to you. you jump to him'
+re.subn()	和 sub 一样，额外返回一个替代次数	re.subn(rr[ua]n, jump, I run to you. you ran to him) > ('I jump to you. you jump to him', 2)
