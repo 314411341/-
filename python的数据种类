@@ -191,3 +191,8 @@ re.finditer()	和 findall 一样，只是用迭代器的方式使用	for item in
 re.split()	用正则分开字符串	re.split(rr[ua]n, I run to you. you ran to him) > ['I ', ' to you. you ', ' to him']
 re.sub()	用正则替换字符	re.sub(rr[ua]n, jump, I run to you. you ran to him) > 'I jump to you. you jump to him'
 re.subn()	和 sub 一样，额外返回一个替代次数	re.subn(rr[ua]n, jump, I run to you. you ran to him) > ('I jump to you. you jump to him', 2)
+
+
+
+pickle和json序列化
+
