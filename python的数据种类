@@ -195,4 +195,44 @@ re.subn()	和 sub 一样，额外返回一个替代次数	re.subn(rr[ua]n, jump,
 
 
 pickle和json序列化
+pickle
+class File:
+    def __init__(self, name, create_time, size):
+        self.name = name
+        self.create_time = create_time
+        self.size = size
+    
+    def change_name(self, new_name):
+        self.name = new_name
 
+data = File("f2.txt", "now", 222)
+# 存
+with open("data.pkl", "wb") as f:
+    pickle.dump(data, f)
+# 读
+with open("data.pkl", "rb") as f:
+    read_data = pickle.load(f)
+print(read_data.name)
+print(read_data.size)
+有些类型的对象是不能被序列化的。这些通常是那些依赖外部系统状态的对象， 比如打开的文件，网络连接，线程，进程，栈帧等等。 如果你在 class 中把上述东西赋值到了 class 的属性上，比如下面的 self.file = open()，这样的 class 在 pickle 的时候会报错
+
+json
+data = {"filename": "f1.txt", "create_time": "today", "size": 111}
+with open("data.json", "w") as f:
+    json.dump(data, f)
+
+print("直接当纯文本读：")
+with open("data.json", "r") as f:
+    print(f.read())
+
+print("用 json 加载了读：")
+with open("data.json", "r") as f:
+    new_data = json.load(f)
+print("字典读取：", new_data["filename"])
+输出：
+直接当纯文本读：
+{"filename": "f1.txt", "create_time": "today", "size": 111}
+用 json 加载了读：
+字典读取： f1.txt
+
+控制异常try  and  except
